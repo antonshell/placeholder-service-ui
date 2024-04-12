@@ -14,8 +14,8 @@ import {CommonModule} from "@angular/common";
   styleUrl: './placeholder.component.scss'
 })
 export class PlaceholderComponent {
-  imageUrl: string = 'https://placeholder.antonshell.me/img?width=500';
-
+  public createForm: FormGroup;
+  imageUrl: string;
   formats = [
     {name: 'jpeg', title: 'JPEG'},
     {name: 'png', title: 'PNG'},
@@ -25,18 +25,19 @@ export class PlaceholderComponent {
   constructor(
     private formBuilder: FormBuilder,
   ) {
+    this.createForm = this.formBuilder.group({
+      text: ['Placeholder service', Validators.required],
+      width: ['1024', Validators.required],
+      height: ['250', Validators.required],
+      textSize: ['28', Validators.required],
+      textColor: ['fff', Validators.required],
+      backgroundColor: ['888', Validators.required],
+      format: new FormControl(this.formats[0]),
+    });
+
+    this.imageUrl = this.generateImageUrl();
   }
-
-  public createForm: FormGroup = this.formBuilder.group({
-    text: ['Placeholder service', Validators.required],
-    width: ['1024', Validators.required],
-    height: ['768', Validators.required],
-    textSize: ['28'],
-    textColor: ['000'],
-    backgroundColor: ['fff'],
-    format: new FormControl(this.formats[0]),
-  });
-
+  
   get text() {
     return this.createForm.get('text');
   }
@@ -68,6 +69,24 @@ export class PlaceholderComponent {
   ngOnInit(): void {}
 
   onSubmit() {
-    console.log('### onSubmit ###');
+    if (this.createForm.invalid) {
+      return;
+    }
+
+    this.imageUrl = this.generateImageUrl();
+  }
+
+  private generateImageUrl(): string
+  {
+    let url = 'https://placeholder.antonshell.me/img';
+    url += '?text=' + this.text?.value;
+    url += '&width=' + this.width?.value;
+    url += '&height=' + this.height?.value;
+    url += '&text_size=' + this.textSize?.value;
+    url += '&color_text=' + this.textColor?.value;
+    url += '&color_bg=' + this.backgroundColor?.value;
+    url += '&format=' + this.format?.value['name'];
+
+    return url;
   }
 }
