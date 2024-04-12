@@ -64,9 +64,9 @@
       <div class="mb-3">
         <label for="format" class="form-label">Format</label>
         <select id="format" formControlName="format" class="form-select">
-          <!--<option *ngFor="let format of allFormats" [ngValue]="format">
-            {{ format.name }}
-          </option>-->
+          <option *ngFor="let format of formats" [ngValue]="format">
+            {{ format.title }}
+          </option>
         </select>
       </div>
     </div>

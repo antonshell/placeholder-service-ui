@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {Format} from "../../models/format.model";
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-placeholder',
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -13,12 +14,13 @@ import {Format} from "../../models/format.model";
   styleUrl: './placeholder.component.scss'
 })
 export class PlaceholderComponent {
-  allFormats: Format[] = [
-    new Format('jpeg', 'JPEG'),
-    new Format('png', 'PNG'),
-    new Format('gif', 'GIF')
-  ];
   imageUrl: string = 'https://placeholder.antonshell.me/img?width=500';
+
+  formats = [
+    {name: 'jpeg', title: 'JPEG'},
+    {name: 'png', title: 'PNG'},
+    {name: 'gif', title: 'GIF'},
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,8 +34,7 @@ export class PlaceholderComponent {
     textSize: ['28'],
     textColor: ['000'],
     backgroundColor: ['fff'],
-    format: ['png'],
-    country: ['UK'],
+    format: new FormControl(this.formats[0]),
   });
 
   get text() {
