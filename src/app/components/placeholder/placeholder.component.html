@@ -51,13 +51,13 @@
     <div class="col-md-3">
       <div class="mb-3">
         <label for="textColor" class="form-label">Text Color</label>
-        <input type="text" class="form-control" id="textColor" aria-describedby="textColor" formControlName="textColor">
+        <input id="textColor" [(colorPicker)]="textColor" [style.background]="textColor" class="form-control">
       </div>
     </div>
     <div class="col-md-3">
       <div class="mb-3">
         <label for="backgroundColor" class="form-label">Background Color</label>
-        <input type="text" class="form-control" id="backgroundColor" aria-describedby="backgroundColor" formControlName="backgroundColor">
+        <input id="backgroundColor" [(colorPicker)]="backgroundColor" [style.background]="backgroundColor" class="form-control">
       </div>
     </div>
     <div class="col-md-3">

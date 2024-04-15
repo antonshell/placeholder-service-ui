@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {ColorPickerModule} from "ngx-color-picker";
 
 @Component({
   selector: 'app-placeholder',
@@ -8,7 +9,8 @@ import {CommonModule} from "@angular/common";
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule,
   ],
   templateUrl: './placeholder.component.html',
   styleUrl: './placeholder.component.scss'
@@ -22,6 +24,9 @@ export class PlaceholderComponent {
     {name: 'gif', title: 'GIF'},
   ];
 
+  textColor: string = '#fff';
+  backgroundColor: string = '#888';
+
   constructor(
     private formBuilder: FormBuilder,
   ) {
@@ -30,14 +35,12 @@ export class PlaceholderComponent {
       width: ['1024', Validators.required],
       height: ['250', Validators.required],
       textSize: ['28', Validators.required],
-      textColor: ['fff', Validators.required],
-      backgroundColor: ['888', Validators.required],
       format: new FormControl(this.formats[0]),
     });
 
     this.imageUrl = this.generateImageUrl();
   }
-  
+
   get text() {
     return this.createForm.get('text');
   }
@@ -52,14 +55,6 @@ export class PlaceholderComponent {
 
   get textSize() {
     return this.createForm.get('textSize');
-  }
-
-  get textColor() {
-    return this.createForm.get('textColor');
-  }
-
-  get backgroundColor() {
-    return this.createForm.get('backgroundColor');
   }
 
   get format() {
@@ -83,8 +78,8 @@ export class PlaceholderComponent {
     url += '&width=' + this.width?.value;
     url += '&height=' + this.height?.value;
     url += '&text_size=' + this.textSize?.value;
-    url += '&color_text=' + this.textColor?.value;
-    url += '&color_bg=' + this.backgroundColor?.value;
+    url += '&color_text=' + this.textColor.replace('#', '');
+    url += '&color_bg=' +  this.backgroundColor.replace('#', '');
     url += '&format=' + this.format?.value['name'];
 
     return url;
