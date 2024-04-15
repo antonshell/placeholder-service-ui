@@ -30,13 +30,15 @@
     <div class="col-md-3">
       <div class="mb-3">
         <label for="width" class="form-label">Width</label>
-        <input type="text" class="form-control" id="width" aria-describedby="width" formControlName="width">
+        <input type="range" class="form-range" min="0" max="2000" id="width" formControlName="width">
+        <div id="widthHelp" class="form-text">{{ width?.value }}</div>
       </div>
     </div>
     <div class="col-md-3">
       <div class="mb-3">
         <label for="height" class="form-label">Height</label>
-        <input type="text" class="form-control" id="height" aria-describedby="height" formControlName="height">
+        <input type="range" class="form-range" min="0" max="2000" id="height" formControlName="height">
+        <div id="heightHelp" class="form-text">{{ height?.value }}</div>
       </div>
     </div>
   </div>
@@ -45,7 +47,8 @@
     <div class="col-md-3">
       <div class="mb-3">
         <label for="textSize" class="form-label">Text Size</label>
-        <input type="number" class="form-control" id="textSize" aria-describedby="textSize" formControlName="textSize">
+        <input type="range" class="form-range" min="0" max="100" id="textSize" formControlName="textSize">
+        <div id="textSizeHelp" class="form-text">{{ textSize?.value }}</div>
       </div>
     </div>
     <div class="col-md-3">
