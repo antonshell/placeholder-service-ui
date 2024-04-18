@@ -1,0 +1,28 @@
+# Based on this tutorial: https://github.com/marketplace/actions/ssh-deploy
+name: Tests
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Install Node.js
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      # Install frontend dependencies (NPM)
+      - name: Install npm dependencies
+        run: |
+          npm install -g @angular/cli
+          npm install
+      # Copying files and artifacts via SSH
+      - name: Build app
+        run: |
+          npm run ng build --prod
+      - name: Run tests
+        run: |
+          ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
+
+
