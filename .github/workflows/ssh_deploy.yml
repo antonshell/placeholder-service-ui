@@ -40,6 +40,6 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           passphrase: ''
           script: |
-            rsync -a --exclude 'var' --delete /var/www/deployment/placeholder-ui/ /var/www/placeholder-ui/temp
+            rsync -a --exclude 'var' --delete /var/www/deployment/placeholder-ui/ /var/www/placeholder-ui
 
 
