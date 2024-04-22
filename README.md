@@ -1,27 +1,73 @@
-# PlaceholderServiceUi
+# Placeholder service UI
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+There is a simple UI for simple self-hosted [placeholder service](https://github.com/antonshell/placeholder-service).
 
-## Development server
+![demo](https://raw.githubusercontent.com/antonshell/placeholder-service-ui/master/demo.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Demo: [https://placeholder-ui.antonshell.me/](https://placeholder-ui.antonshell.me/)
 
-## Code scaffolding
+Project created with:
+- [Angular](https://github.com/angular/angular) version 17.0.8 
+- [Node.js](https://nodejs.org/) version 20
+- [Bootstrap](https://getbootstrap.com/) version 5
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Install
 
-## Build
+1 . Clone repository
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+git clone https://github.com/antonshell/placeholder-service-ui.git
+```
 
-## Running unit tests
+2 . Install dependencies
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm install
+```
 
-## Running end-to-end tests
+3 . Start application
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm start
+```
 
-## Further help
+4 . Open app
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[http://localhost:4200/](http://localhost:4200/)
+
+# Production build
+
+Production deployment is automated via [ssh_deploy](https://github.com/antonshell/placeholder-service-ui/actions/workflows/ssh_deploy.yml) github action.
+There is such command for building production app.
+
+```
+npm run ng build --prod --output-hashing=all
+```
+
+# Tests
+
+1 . Run unit & integration tests
+
+```
+ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
+```
+
+2 . Run Cypress e2e tests
+
+```
+npm run cypress:run
+```
+
+3 . Open Cypress UI
+
+```
+npm run cypress:open
+```
+
+# Code generation
+
+```
+ng generate service services/auth
+ng generate guard guards/auth
+ng generate component components/tag-edit
+```
