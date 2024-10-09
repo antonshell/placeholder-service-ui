@@ -11,7 +11,7 @@ describe('AboutComponent', () => {
       imports: [AboutComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +19,7 @@ describe('AboutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    const h1 = fixture.nativeElement.querySelector('h1');
+    expect(h1.textContent).toContain('About');
   });
 });
