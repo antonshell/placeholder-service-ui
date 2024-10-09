@@ -2,7 +2,7 @@
 name: Tests
 on: [push]
 jobs:
-  build:
+  angular-tests:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
