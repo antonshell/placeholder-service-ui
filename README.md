@@ -49,8 +49,10 @@ npm run ng build --prod --output-hashing=all
 1 . Run unit & integration tests
 
 ```
-ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
+ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage --karma-config=karma.conf.js
 ```
+
+Full code coverage report: [http://files.antonshell.me/github-actions/placeholder-service-ui/main/coverage/coverage/src/](http://files.antonshell.me/github-actions/placeholder-service-ui/main/coverage/coverage/src/)
 
 2 . Run Cypress e2e tests
 
