@@ -4,6 +4,10 @@ on:
 jobs:
   pull_request_comments:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - name: Extract branch name
         shell: bash
@@ -16,7 +20,7 @@ jobs:
         uses: mshick/add-pr-comment@v1
         with:
           message: |
-            Test coverage report: [http://files.antonshell.me/github-actions/placeholder-service-ui/${{ steps.extract_branch.outputs.branch }}/coverage/coverage/src](http://files.antonshell.me/github-actions/placeholder-service/${{ steps.extract_branch.outputs.branch }}/coverage/coverage/src)
+            Test coverage report: [http://files.antonshell.me/github-actions/placeholder-service-ui/${{ steps.extract_branch.outputs.branch }}/coverage/coverage/src](http://files.antonshell.me/github-actions/placeholder-service-ui/${{ steps.extract_branch.outputs.branch }}/coverage/coverage/src)
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
           allow-repeats: false # This is the default
