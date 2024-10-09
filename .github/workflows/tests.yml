@@ -23,6 +23,6 @@ jobs:
           npm run ng build --prod
       - name: Run tests
         run: |
-          ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
+          ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage --karma-config=karma.conf.js
 
 

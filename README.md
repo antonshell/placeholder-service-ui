@@ -49,7 +49,7 @@ npm run ng build --prod --output-hashing=all
 1 . Run unit & integration tests
 
 ```
-ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage
+ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage --karma-config=karma.conf.js
 ```
 
 2 . Run Cypress e2e tests
