@@ -16,7 +16,7 @@ Project created with:
 1 . Clone repository
 
 ```
-git clone https://github.com/antonshell/placeholder-service-ui.git
+git clone git@github.com:antonshell/placeholder-service-ui.git
 ```
 
 2 . Install dependencies
