@@ -1,0 +1,12 @@
+# Local development. Production uses the `prod` target of the same Dockerfile (see deploy/compose.yml).
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    # run as the host user so files created in the bind mount (node_modules/, public/, coverage/) are yours
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    volumes:
+      - ./:/app
+    ports:
+      - "4200:4200"

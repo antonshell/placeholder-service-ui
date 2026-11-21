@@ -1,0 +1,19 @@
+# Production stack. Lives on the server in $DEPLOY_PATH together with a .env file
+# (APP_IMAGE) written by the GitHub Actions deploy job.
+name: placeholder-service-ui
+
+services:
+  app:
+    image: ${APP_IMAGE:?APP_IMAGE is not set}
+    container_name: placeholder-service-ui
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+    name: ${CADDY_NETWORK:-web}

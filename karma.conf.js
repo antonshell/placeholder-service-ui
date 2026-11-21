@@ -33,6 +33,14 @@ module.exports = function (config) {
                 subdir: '.',
                 file: 'clover.xml',
               },
+              // per-file table for the CI job summary
+              {
+                type: 'text',
+                subdir: '.',
+                file: 'coverage.txt',
+                maxCols: 200,
+              },
+              { type: 'text-summary' },
             ]
         },
         reporters: ['progress', 'kjhtml', 'mocha'],
