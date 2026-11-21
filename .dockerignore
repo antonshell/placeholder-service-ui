@@ -1,0 +1,12 @@
+.git
+.github
+.idea
+.vscode
+.angular
+node_modules
+public
+dist
+coverage
+deploy
+docker-compose.yml
+demo.png

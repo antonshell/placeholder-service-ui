@@ -1,0 +1,6 @@
+# Append to /srv/proxy/Caddyfile (Caddy and placeholder-service-ui share the external "web" network), then reload:
+#   cd /srv/proxy && docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
+placeholder-ui.antonshell.me {
+	encode zstd gzip
+	reverse_proxy placeholder-service-ui:8080
+}
